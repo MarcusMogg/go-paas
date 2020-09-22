@@ -14,6 +14,9 @@ func Router() *gin.Engine {
 	Router.Use(middleware.Cors()) // 跨域
 
 	APIGroup := Router.Group("")
+	APIGroup.GET("", func(c *gin.Context) {
+		c.String(200, "hello world")
+	})
 	router.InitUserRouter(APIGroup)
 	router.InitCourseRouter(APIGroup)
 	router.InitStudentRouter(APIGroup)
