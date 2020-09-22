@@ -15,7 +15,7 @@ func MatchEmail(str string) bool {
 	return match(`^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$`, str)
 }
 
-// MatchStudentID 判断学生ID,必须为八位数字
+// MatchStudentID 判断学生ID,必须以数字字母开头，只能包含数字字母和下划线
 func MatchStudentID(str string) bool {
-	return match(`^[0-9]{8}$`, str)
+	return match(`^[A-Za-z0-9][a-zA-Z0-9_]*$`, str)
 }
