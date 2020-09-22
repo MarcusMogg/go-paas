@@ -94,6 +94,18 @@ func GetUserInfoByID(c *gin.Context) {
 	}
 }
 
+// GetUserInfo 获取用户信息
+func GetUserInfo(c *gin.Context) {
+	claim, ok := c.Get("user")
+	if !ok {
+		response.FailWithMessage("未通过jwt认证", c)
+		return
+	}
+	user := claim.(*entity.MUser)
+
+	response.OkWithData(user, c)
+}
+
 // UpdateEmail 获取用户邮箱
 func UpdateEmail(c *gin.Context) {
 	claim, ok := c.Get("user")
