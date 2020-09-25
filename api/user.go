@@ -136,7 +136,7 @@ func UpdateAvatar(c *gin.Context) {
 	}
 	user := claim.(*entity.MUser)
 	savePath := "source/avator/" + fmt.Sprintf("%d/", user.ID)
-	fileName, suf, err := uploadFile(savePath, c)
+	fileName, suf, err := uploadFile(savePath, true, c)
 	if err != nil {
 		response.FailWithMessage(fmt.Sprintf("%v", err), c)
 	}
