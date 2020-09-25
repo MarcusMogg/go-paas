@@ -36,7 +36,7 @@ func GetStudents(cid uint) []entity.MUser {
 // DeleteStudent 删除学生
 func DeleteStudent(uid, cid uint) error {
 	var id uint
-	global.GDB.Model(&entity.Course{}).Select("teacher_id").Where("course_id = ?", cid).Scan(&id)
+	global.GDB.Model(&entity.Course{}).Select("teacher_id").Where("id = ?", cid).Scan(&id)
 	if id == uid {
 		return errors.New("不能删除老师")
 	}

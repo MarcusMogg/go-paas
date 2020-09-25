@@ -45,7 +45,7 @@ func GetCourseByID(id uint) *entity.Course {
 // GetMyCourses 通过id获取课程列表
 func GetMyCourses(id uint) []entity.Course {
 	var c []entity.Course
-	global.GDB.Table("courses").Joins("JOIN courses on course_students.course_id = courses.id").
+	global.GDB.Table("courses").Joins("JOIN course_students on course_students.course_id = courses.id").
 		Where("course_students.student_id = ?", id).Find(&c)
 	return c
 }

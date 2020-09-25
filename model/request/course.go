@@ -17,3 +17,9 @@ type CourseUReq struct {
 	CourseIDReq
 	CourseReq
 }
+
+// CourseFolderReq 课程创建文件夹申请
+type CourseFolderReq struct {
+	CourseIDReq
+	Name string `json:"name"`
+}

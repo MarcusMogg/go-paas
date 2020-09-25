@@ -10,4 +10,5 @@ func DBTables() {
 	global.GDB.AutoMigrate(&entity.MUser{})
 	global.GDB.AutoMigrate(&entity.Course{})
 	global.GDB.AutoMigrate(&entity.CourseStudents{})
+	global.GDB.AutoMigrate(&entity.MFilePath{})
 }

@@ -110,6 +110,7 @@ func DeleteCourse(c *gin.Context) {
 	var id request.CourseIDReq
 	if err := c.BindJSON(&id); err == nil {
 		service.DropCourse(id.ID, user.ID)
+		response.Ok(c)
 	} else {
 		response.FailValidate(c)
 	}

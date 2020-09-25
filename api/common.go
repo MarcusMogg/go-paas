@@ -10,14 +10,16 @@ import (
 )
 
 // uploadFile 上传文件 filePath最后需要有一个/
-func uploadFile(filePath string, c *gin.Context) (string, string, error) {
+func uploadFile(filePath string, rename bool, c *gin.Context) (string, string, error) {
 	file, err := c.FormFile("file")
 	if err != nil {
 		return "", "", err
 	}
 	os.MkdirAll(filePath, os.ModePerm)
-	_, suf := getFileInfo(file.Filename)
-	fileName := fmt.Sprintf("%d", time.Now().Unix())
+	fileName, suf := getFileInfo(file.Filename)
+	if rename {
+		fileName = fmt.Sprintf("%d", time.Now().Unix())
+	}
 	if err := c.SaveUploadedFile(file, filePath+fileName+suf); err != nil {
 		return "", "", err
 	}
