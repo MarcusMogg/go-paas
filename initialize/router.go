@@ -21,5 +21,6 @@ func Router() *gin.Engine {
 	router.InitCourseRouter(APIGroup)
 	router.InitStudentRouter(APIGroup)
 	router.InitCourseFileRouter(APIGroup)
+	router.InitDockerRouter(APIGroup)
 	return Router
 }

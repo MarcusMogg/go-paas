@@ -35,14 +35,8 @@ func GetCourseFiles(cid uint) []entity.MFilePath {
 	return files
 }
 
-// GetCourseFile 获取文件列表
-func GetCourseFile(cid uint, name string) error {
-	var files entity.MFilePath
-	return global.GDB.Where("c_id = ? AND name = ?", cid, name).First(&files).Error
-}
-
 //DropCourseFile 删除文件
-func DropCourseFile(cid uint, name string) {
+func DropCourseFile(cid uint, name string) error {
 	var files entity.MFilePath
-	global.GDB.Where("c_id = ? AND name = ?", cid, name).Delete(&files)
+	return global.GDB.Where("c_id = ? AND name = ?", cid, name).Delete(&files).Error
 }

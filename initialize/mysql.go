@@ -3,6 +3,7 @@ package initialize
 import (
 	"fmt"
 	"paas/global"
+	"paas/model/entity"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -17,5 +18,11 @@ func Mysql() {
 		panic(fmt.Errorf("MySQL启动异常: %s", err))
 	} else {
 		global.GDB = db
+		global.GPORT = global.GCONFIG.Portbase
+		var maxuse int
+		db.Model(&entity.ContainerUser{}).Select("max(port_bind)").Scan(&maxuse)
+		if maxuse+1 > global.GPORT {
+			global.GPORT = maxuse + 1
+		}
 	}
 }

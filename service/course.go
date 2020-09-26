@@ -31,7 +31,7 @@ func IsCourseTeacher(cid, uid uint, tx *gorm.DB) bool {
 
 // InCourse 检查id是否属于课程
 func InCourse(cid, uid uint, tx *gorm.DB) bool {
-	result := tx.Where("course_id = ? AND student_id = ? AND status = ?", cid, uid, 1).First(&entity.CourseStudents{})
+	result := tx.Where("course_id = ? AND student_id = ?", cid, uid).First(&entity.CourseStudents{})
 	return !errors.Is(result.Error, gorm.ErrRecordNotFound)
 }
 
