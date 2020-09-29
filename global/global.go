@@ -3,6 +3,8 @@ package global
 import (
 	"paas/config"
 
+	"github.com/docker/docker/client"
+
 	"github.com/spf13/viper"
 	"gorm.io/gorm"
 )
@@ -14,6 +16,10 @@ var (
 	GVP *viper.Viper
 	// GDB 数据库连接
 	GDB *gorm.DB
+	//GDOCKER docker连接
+	GDOCKER *client.Client
+	// GPORT 未使用的端口
+	GPORT int
 )
 
 // TimeTemplateDay 时间转换模板，到天

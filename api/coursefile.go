@@ -55,3 +55,17 @@ func GetCourseFiles(c *gin.Context) {
 		response.FailValidate(c)
 	}
 }
+
+// DelCourseFile 删除文件
+func DelCourseFile(c *gin.Context) {
+	var file entity.MFilePath
+	if err := c.BindJSON(&file); err == nil {
+		if err := service.DropCourseFile(file.CID, file.Name); err != nil {
+			response.FailWithMessage(err.Error(), c)
+		} else {
+			response.Ok(c)
+		}
+	} else {
+		response.FailValidate(c)
+	}
+}

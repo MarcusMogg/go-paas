@@ -9,6 +9,7 @@ import (
 func main() {
 	initialize.Mysql()
 	initialize.DBTables()
+	initialize.Docker()
 	runServer()
 }
 

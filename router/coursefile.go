@@ -13,5 +13,6 @@ func InitCourseFileRouter(Router *gin.RouterGroup) {
 	{
 		UserRouter.POST("createfile", middleware.JWTAuth(), api.UploadCourseFile)
 		UserRouter.POST("files", middleware.JWTAuth(), middleware.CourseAuth(), api.GetCourseFiles)
+		UserRouter.POST("del", middleware.JWTAuth(), middleware.CourseTeacherAuth(), api.DelCourseFile)
 	}
 }
